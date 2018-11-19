@@ -1,0 +1,9 @@
+cron:
+- description: "daily snapshot job"
+  url: /create_snapshots?tag=loquesea
+  schedule: every day 02:00
+  timezone: America/New_York
+- description: "daily purge job"
+  url: /purge_snapshots?days=4
+  schedule: every day 03:00
+  timezone: America/New_York
