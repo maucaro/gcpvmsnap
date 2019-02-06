@@ -66,7 +66,7 @@ function purgeSnapshots(days) {
       snaps = snaps.filter(snap => {
         //filter out the ones that are not older than 'days' days and apply stricter regex expression
         const MILLISECONDS_DAY = 86400000;
-        return (snap.metadata.name.search(/s-\d+-.{1,24}-\d{14}/) === 0) && ((Date.now() - Date.parse(snap.metadata.creationTimestamp)) > (days * MILLISECONDS_DAY));
+        return (snap.metadata.name.search(/s-\d+-.{1,25}-\d{14}/) === 0) && ((Date.now() - Date.parse(snap.metadata.creationTimestamp)) > (days * MILLISECONDS_DAY));
       });
       console.log(`Snapshots to process: ${snaps.length}`);
       const purgePromises = [];

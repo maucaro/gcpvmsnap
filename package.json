@@ -6,7 +6,8 @@
   "main": "server.js",
   "scripts": {
     "test": "nyc --reporter=text --reporter=html mocha --exit",
-    "eslint": "eslint"
+    "eslint": "eslint",
+    "start": "node server.js"
   },
   "keywords": [
     "gcp"
