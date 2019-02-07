@@ -3,6 +3,7 @@ steps:
   args: ['install']
 - name: 'gcr.io/cloud-builders/npm'
   args: ['test']
+  env: ['GOOGLE_APPLICATION_CREDENTIALS=./gac.json']
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy", "app.yaml"]
 timeout: "1600s"
