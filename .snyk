@@ -24,6 +24,12 @@ patch:
         patched: '2019-07-31T15:33:28.869Z'
     - snyk > snyk-go-plugin > graphlib > lodash:
         patched: '2019-07-31T15:33:28.869Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/dep-graph > lodash:
+        patched: '2019-12-14T16:45:25.298Z'
+    - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
+        patched: '2019-12-14T16:45:25.298Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/cocoapods-lockfile-parser > @snyk/dep-graph > lodash:
+        patched: '2019-12-14T16:45:25.298Z'
   SNYK-JS-HTTPSPROXYAGENT-469131:
     - '@google-cloud/compute > gce-images > google-auth-library > gaxios > https-proxy-agent':
         patched: '2019-10-04T08:19:18.716Z'
