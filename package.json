@@ -21,7 +21,7 @@
     "node": "8.16.0"
   },
   "dependencies": {
-    "@google-cloud/compute": "^0.12.0",
+    "@google-cloud/compute": "^2.0.1",
     "express": "^4.16.4",
     "require-header": "^1.0.4",
     "snyk": "^1.316.1"
