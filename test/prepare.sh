@@ -1,6 +1,6 @@
 #!/bin/bash
 VM_PREFIX=test-snap
-ZONE=us-central1-a
+ZONE=us-west2-a
 VM_TAG_FILTER=gcpvmsnapfilter
 
 # No tags

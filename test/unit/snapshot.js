@@ -2,13 +2,16 @@ const expect = require('chai').expect;
 
 const mockery = require('mockery');
 mockery.registerSubstitute('@google-cloud/compute', './compute-mock');
-mockery.enable();
+mockery.enable({
+  warnOnReplace: false,
+  warnOnUnregistered: false
+});
 
 const Compute = require('@google-cloud/compute');
 const snapshot = require("../../snapshot");
 
 
-context('Sanpshot Creation', function () {
+describe('Sanpshot Creation', function () {
   before(function () {
 
   });
