@@ -3,18 +3,19 @@
 //Key to use in VM's custom metadata
 const VM_TAG_FILTER = 'gcpvmsnapfilter';
 
-const Compute = require('@google-cloud/compute');
+const computeLocal = '@google-cloud/compute';
+const Compute = require(computeLocal);
 const compute = new Compute();
 
-function createSnapshots(tag) {
+function createSnapshots(tag: string) {
   return compute.getVMs()
-    .then(data => {
+    .then((data: any[]) => {
       let vms = data[0];
       if (tag) {
         //need to filter out VMs whose metadata doesn't match the passed in value
         vms = vms.filter(vm => {
           const items = vm.metadata.metadata.items ? vm.metadata.metadata.items : [];
-          return (items.find(o => o.key === VM_TAG_FILTER && o.value === tag)) ? true : false;
+          return (items.find((o: { key: string; value: string; }) => o.key === VM_TAG_FILTER && o.value === tag)) ? true : false;
         });
       }
       console.log(`VMs to process: ${vms.length}`);
@@ -58,10 +59,10 @@ function createSnapshots(tag) {
     });
 }
 
-function purgeSnapshots(days) {
+function purgeSnapshots(days = 0) {
   //only checking that it starts with "s-"; more complex patterns don't seem to be supported 
   return compute.getSnapshots({ filter: "name eq '^s-.*$'" })
-    .then(data => {
+    .then((data: any[]) => {
       let snaps = data[0];
       snaps = snaps.filter(snap => {
         //filter out the ones that are not older than 'days' days and apply stricter regex expression
@@ -93,5 +94,4 @@ function purgeSnapshots(days) {
     });
 }
 
-module.exports.createSnapshots = createSnapshots;
-module.exports.purgeSnapshots = purgeSnapshots;
+export { createSnapshots,  purgeSnapshots};

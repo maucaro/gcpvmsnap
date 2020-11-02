@@ -1,6 +1,6 @@
 # gcpvmsnap
 
-Google App Engine Node project that creates periodic (cron-based) snapshots of VM's persistent disks. Periodic purges of old snapshots is also supported. 
+Google App Engine Node.js project that creates periodic (cron-based) snapshots of VM's persistent disks. Periodic purges of old snapshots is also supported. 
 
 ### Description
 
@@ -40,7 +40,7 @@ Examples:
 
 - Optionally tag your VMs according to your needs
 
-- gcluod app deploy - deploys to GAE
+- gcloud app deploy - deploys to GAE
 
 - gcloud app deploy cron.yaml - deploys only cron.yaml; use this if modifying the schedule
 

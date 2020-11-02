@@ -8,7 +8,7 @@ mockery.enable({
 });
 
 const Compute = require('@google-cloud/compute');
-const snapshot = require("../../snapshot");
+const snapshot = require("../../built/snapshot");
 
 
 describe('Sanpshot Creation', function () {
