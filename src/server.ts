@@ -2,12 +2,15 @@
 
 import { createSnapshots, purgeSnapshots } from './snapshot';
 
-import requireHeader from 'require-header';
 import express from 'express';
 const app = express();
 
-//Only allow requests from GAE Cron service
-app.use(requireHeader('X-Appengine-Cron'));
+import requireHeader from 'require-header';
+
+if (process.env.HTTP_HEADER) {
+  //Only allow requests from GAE Cron service if HTTP_HEADER is set to 'X-Appengine-Cron'
+  app.use(requireHeader(process.env.HTTP_HEADER));
+}
 
 app.get('/create_snapshots', function (req, res) {
     const recMessage = `Snapshot creation request received at ${new Date().toISOString()}`;

@@ -2,6 +2,8 @@
 
 Google App Engine Node.js project that creates periodic (cron-based) snapshots of VM's persistent disks. Periodic purges of old snapshots is also supported. 
 
+Cloud Run is another deployment option in conjunction with Cloud Scheduler, which would need to be set up manually. 
+
 ### Description
 
 cron.yaml is used to set the cron schedule. Documentation can be found here: https://cloud.google.com/appengine/docs/standard/nodejs/scheduling-jobs-with-cron-yaml
@@ -40,9 +42,17 @@ Examples:
 
 - Optionally tag your VMs according to your needs
 
-- gcloud app deploy - deploys to GAE
+If installing to App Engine (GAE):
 
-- gcloud app deploy cron.yaml - deploys only cron.yaml; use this if modifying the schedule
+- 'gcloud app deploy' - deploys to GAE
+
+- 'gcloud app deploy cron.yaml' - deploys only cron.yaml; use this if modifying the schedule
+
+If installing to Cloud Run:
+
+- 'gcloud alpha builds submit --pack image=gcr.io/<YOUR-PROJECT>/<SERVICE-NAME> && gcloud beta run services replace service.yaml --region <YOUR-REGION> --platform managed
+
+- Cloud Scheduler can be used as the scheduling engine 
 
 ### Testing
 

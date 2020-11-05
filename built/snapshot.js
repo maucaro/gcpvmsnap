@@ -57,6 +57,7 @@ function createSnapshots(tag) {
 }
 exports.createSnapshots = createSnapshots;
 function purgeSnapshots(days) {
+    if (days === void 0) { days = 0; }
     //only checking that it starts with "s-"; more complex patterns don't seem to be supported 
     return compute.getSnapshots({ filter: "name eq '^s-.*$'" })
         .then(function (data) {

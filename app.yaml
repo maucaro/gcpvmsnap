@@ -1,2 +1,4 @@
 env: flex
 runtime: nodejs
+env_variables:
+  HTTP_HEADER: "X-Appengine-Cron"

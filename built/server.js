@@ -4,11 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var snapshot_1 = require("./snapshot");
-var require_header_1 = __importDefault(require("require-header"));
 var express_1 = __importDefault(require("express"));
 var app = express_1.default();
-//Only allow requests from GAE Cron service
-app.use(require_header_1.default('X-Appengine-Cron'));
+var require_header_1 = __importDefault(require("require-header"));
+if (process.env.HTTP_HEADER) {
+    //Only allow requests from GAE Cron service if HTTP_HEADER is set to 'X-Appengine-Cron'
+    app.use(require_header_1.default(process.env.HTTP_HEADER));
+}
 app.get('/create_snapshots', function (req, res) {
     var recMessage = "Snapshot creation request received at " + new Date().toISOString();
     console.log(recMessage);
