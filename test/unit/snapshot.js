@@ -74,26 +74,6 @@ describe('Sanpshot Creation', function () {
   });
 });
 
-context('Sanpshot Creation with no application credentials', () => {
-  let gac;
-
-  before(function () {
-    gac = process.env.GOOGLE_APPLICATION_CREDENTIALS;
-    delete process.env.GOOGLE_APPLICATION_CREDENTIALS;
-  });
-
-  it('Empty GOOGLE_APPLICATION_CREDENTIALS', function (done) {
-    snapshot.createSnapshots()
-      .catch(() => {
-        done();
-      });
-  });
-
-  after(function () {
-    process.env.GOOGLE_APPLICATION_CREDENTIALS = gac;
-  });
-});
-
 context('Sanpshot Purge', () => {
   for (let days = 0; days < 10; days++) {
     it(`days = ${days}`, function (done) {
@@ -109,22 +89,4 @@ context('Sanpshot Purge', () => {
   }
 });
 
-context('Sanpshot purge with no application credentials', () => {
-  let gac;
 
-  before(function () {
-    gac = process.env.GOOGLE_APPLICATION_CREDENTIALS;
-    delete process.env.GOOGLE_APPLICATION_CREDENTIALS;
-  });
-
-  it('Empty GOOGLE_APPLICATION_CREDENTIAL ', function (done) {
-    snapshot.purgeSnapshots()
-      .catch(() => {
-        done();
-      });
-  });
-
-  after(function () {
-    process.env.GOOGLE_APPLICATION_CREDENTIALS = gac;
-  });
-});

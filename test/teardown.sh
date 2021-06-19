@@ -1,6 +1,6 @@
 #!/bin/bash
 VM_PREFIX=test-snap
-ZONE=us-central1-a
+ZONE=us-west2-a
 
 gcloud compute instances delete $VM_PREFIX-1 --zone $ZONE -q
 gcloud compute instances delete $VM_PREFIX-2 --zone $ZONE -q
