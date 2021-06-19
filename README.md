@@ -30,7 +30,7 @@ Examples:
 
 ### Prerequisites
 
-- Access to a Google Cloud Platform (GCP) project with sufficient permissions to deploy to Google App Engine Flexible Environment.
+- Access to a Google Cloud Platform (GCP) project with sufficient permissions to deploy to Google App Engine Flexible Environment and/or Cloud Run.
 
 - Google Cloud SDK.
 
