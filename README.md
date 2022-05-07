@@ -4,9 +4,9 @@ Google App Engine Node.js project that creates periodic (cron-based) snapshots o
 
 Cloud Run is another deployment option in conjunction with Cloud Scheduler, which would need to be set up manually. 
 
-### Description
+## Description
 
-cron.yaml is used to set the cron schedule. Documentation can be found here: https://cloud.google.com/appengine/docs/standard/nodejs/scheduling-jobs-with-cron-yaml
+cron.yaml is used to set the cron schedule. Documentation can be found [here](https://cloud.google.com/appengine/docs/standard/nodejs/scheduling-jobs-with-cron-yaml).
 
 /create_snapshots can take a "tag" query parameter
 - If ommitted, all VMs in the project are processed
@@ -28,33 +28,41 @@ Examples:
 - /purge_snapshots - purges snapshots older than 7 days
 - /purge_snapshots?days=2 - purges snapshots older than 2 days
 
-### Prerequisites
+## Prerequisites
 
 - Access to a Google Cloud Platform (GCP) project with sufficient permissions to deploy to Google App Engine Flexible Environment and/or Cloud Run.
 
 - Google Cloud SDK.
 
-### Installing
+## Installing
 
 - Download project
 
-- Modify cron.yaml per your needs
+- Modify cron.yaml according to your needs (only if using App Engine)
 
 - Optionally tag your VMs according to your needs
 
-If installing to App Engine (GAE):
+To deploy to App Engine (GAE):
+```bash
+gcloud app deploy
+```
+To deploy or modify the App Engine schedule (deploys only cron.yaml):
+```bash
+gcloud app deploy cron.yaml
+```
 
-- 'gcloud app deploy' - deploys to GAE
+To deploy to Cloud Run:
+```bash
+gcloud run deploy --source . --set-env-vars=HTTP_HEADER=X-CloudScheduler
+```
+Notes:
+- When you are prompted for the service name, press Enter to accept the default name, gcpvmsnap
+- If you are prompted to enable the Artifact Registry API, respond by pressing y.
+- When you are prompted for region: select the region of your choice.
+- You will be prompted to allow unauthenticated invocations: respond y. The existence of the 'X-CloudScheduler' HTTP header will be checked to ensure only requests from Cloud Scheduler are allowed.
+- Cloud Scheduler can be used as the scheduling engine and needs to be set up manually.
 
-- 'gcloud app deploy cron.yaml' - deploys only cron.yaml; use this if modifying the schedule
-
-If installing to Cloud Run:
-
-- 'gcloud alpha builds submit --pack image=gcr.io/<YOUR-PROJECT>/<SERVICE-NAME> && gcloud beta run services replace service.yaml --region <YOUR-REGION> --platform managed
-
-- Cloud Scheduler can be used as the scheduling engine 
-
-### Testing
+## Testing
 
 All testing artifacts are in the ./test directory.
 
@@ -64,7 +72,7 @@ Included curl-based shell scripts can be used for local integration testing (acc
 
 Included Google Cloud SDK-based shell scripts can be used to prepare an environment for end-to-end testing.  
 
-### License 
+## License 
 
 This project is licensed under the Apache 2.0 license.
 

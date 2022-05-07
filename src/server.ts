@@ -8,7 +8,8 @@ const app = express();
 import requireHeader from 'require-header';
 
 if (process.env.HTTP_HEADER) {
-  //Only allow requests from GAE Cron service if HTTP_HEADER is set to 'X-Appengine-Cron'
+  //Only allow requests from GAE Cron service or Cloud Scheduler by checking 
+  //for the presence of the corresponding header ('X-Appengine-Cron' or 'X-CloudScheduler') 
   app.use(requireHeader(process.env.HTTP_HEADER));
 }
 
