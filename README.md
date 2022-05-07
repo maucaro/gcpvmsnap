@@ -4,6 +4,8 @@ Google App Engine Node.js project that creates periodic (cron-based) snapshots o
 
 Cloud Run is another deployment option in conjunction with Cloud Scheduler, which would need to be set up manually. 
 
+**Note:** This project was initially created in 2018 when scheduled snapshots were not natively avalable in GCP. Now this capability is provided natively (see [Creating scheduled snapshots for persistent disk](https://cloud.google.com/compute/docs/disks/scheduled-snapshots)). As such, this project is no longer relevant. I keep it as an example of how App Engine or Cloud Run can be used in conjunction with Cloud Scheduler to automate tasks using GCP's Cloud SDK.
+
 ## Description
 
 cron.yaml is used to set the cron schedule. Documentation can be found [here](https://cloud.google.com/appengine/docs/standard/nodejs/scheduling-jobs-with-cron-yaml).
