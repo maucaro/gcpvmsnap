@@ -21,7 +21,7 @@
   "dependencies": {
     "@google-cloud/compute": "^2.6.0",
     "@types/express": "^4.17.13",
-    "express": "^4.18.1",
+    "express": "^4.19.2",
     "require-header": "^3.0.0"
   },
   "devDependencies": {
